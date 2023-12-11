@@ -19,7 +19,7 @@ client.on("ready", (c) => { // When bot initialises
     console.log(`${c.user.username} is online...`)
 });
 
-const replies = ["Deez nuts", "Ligma balls", "Candice", "Sugma", "Dragon"];
+const replies = ["stfu lol", "ratio", "cry about it", "beta", "L"];
 
 client.on("messageCreate", (message) => { // When bot reads message
 
@@ -27,10 +27,8 @@ client.on("messageCreate", (message) => { // When bot reads message
         return
     }
 
-    if(message.content === "slam") {
-        const replyIndex = Math.floor(Math.random() * replies.length);
-        const selectedReply = replies[replyIndex];
-        message.reply(selectedReply);
+    if(message.content === "wtf" || message.content === "Wtf" || message.content === "wth" || message.content === "Wth") {
+        message.reply(getRandomArrElement(replies));
     }
 });
 
@@ -38,8 +36,36 @@ client.on("interactionCreate", (interaction) => {
     if (interaction.isChatInputCommand()){
         switch(interaction.commandName){
             case "ping":
-                interaction.reply("Hey!");
+                interaction.reply("pong");
+                break;
+            case "pong":
+                interaction.reply("ping");
+                break;
+            case "balls":
+                interaction.reply(ballsCommand(interaction.options.get("what").value, interaction.options.get("who").value));
                 break;
         }
     }
 })
+
+function getRandomArrElement(array) {
+    const replyIndex = Math.floor(Math.random() * array.length);
+    const selectedReply = replies[replyIndex];
+    return selectedReply;
+}
+
+function ballsCommand (what, who){
+    switch(what) {
+        case "ligma":
+            return `# LIGMA BALLS ${who}`;
+        case "sugma":
+            return `# SUGMA BALLS ${who}`;
+        case "dragon":
+            return `# DRAGON DEEZ BALLS ${who}`;
+        case "candice":
+            return `# CANDICE COCK FIT IN YOUR MOUTH ${who}`;
+        case "bofa":
+            return `# BOFA DEEZ BALLS IN YOUR MOUTH ${who}`;
+        
+    }
+}
