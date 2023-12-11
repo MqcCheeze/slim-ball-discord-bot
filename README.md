@@ -1,2 +1,1 @@
-# slim-ball-discord-bot
- 
+a random discord bot I'm making lol
