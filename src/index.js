@@ -24,6 +24,18 @@ const replies = ["stfu lol", "ratio", "cry about it", "beta", "L"];
 
 client.on("messageCreate", (message) => { // When bot reads message
 
+    if(message.author.id == process.env.NOPENGOOBOT_ID && message.mentions.has(client.user)) {
+        const slapMsg = message.content.split(" ");
+        console.log(slapMsg);
+        for (const word of slapMsg) {
+            if (word === "slaps" || word === "ties") {
+                message.reply("OWW why did you do that :sob:");
+                break;
+            }
+        }
+    }
+
+
     if (message.author.bot) {
         return
     }
