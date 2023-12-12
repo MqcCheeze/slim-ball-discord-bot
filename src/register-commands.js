@@ -9,10 +9,12 @@ const commands = [
     {   name: "pong", 
         description: "PING!"
     },
+    /*/
     {
         name: "ratio", 
         description: "send ratio!"
     },
+    /*/
     {
         name: "iasked", 
         description: "make the bot defend you"

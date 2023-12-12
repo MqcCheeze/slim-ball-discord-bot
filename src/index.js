@@ -28,8 +28,8 @@ client.on("messageCreate", (message) => { // When bot reads message
         const slapMsg = message.content.split(" ");
         console.log(slapMsg);
         for (const word of slapMsg) {
-            if (word === "slaps" || word === "ties") {
-                message.reply("OWW why did you do that :sob:");
+            if (word === "slaps" || word === "ties" || word === "bonks") {
+                message.reply(`${message.mentions.users.first()} OWW why did you do that :sob:`);
                 break;
             }
         }
@@ -63,17 +63,20 @@ client.on("interactionCreate", (interaction) => {
             case "balls":
                 interaction.reply(ballsCommand(interaction.options.get("what").value, interaction.options.get("who").value));
                 break;
+            /*/
             case "ratio":
                 getRandomLine("src/ratioMessages.txt", function (randomRatio) {
                     let ratio = randomRatio;
                     ratio = ratio.charAt(0).toUpperCase() + ratio.slice(1);
                     interaction.reply(`Yeah what ${interaction.user} said! ${ratio}`);
                 });
+            /*/
             case "iasked":
                 interaction.reply(`I asked ${interaction.user}`);
         }
     }
 })
+
 
 
 function getRandomArrElement(array) {
