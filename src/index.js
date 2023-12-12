@@ -29,10 +29,6 @@ client.on("messageCreate", (message) => { // When bot reads message
 
     if(message.content === "wtf" || message.content === "Wtf" || message.content === "wth" || message.content === "Wth") {
         message.reply(getRandomArrElement(replies));
-    } else if (message.content === "ping"){
-        message.reply("pong");
-    } else if (message.content === "pong"){
-        message.reply("ping");
     }
 });
 
@@ -62,9 +58,11 @@ function getRandomArrElement(array) {
 }
 
 function ballsCommand (what, who){
+
+    who = `<@${who}>`;
     switch(what) {
         case "ligma":
-            return `# LIGMA BALLS ${who}`;
+            return `# LIGMA BALLS ${who}}`;
         case "sugma":
             return `# SUGMA BALLS ${who}`;
         case "dragon":
@@ -76,8 +74,7 @@ function ballsCommand (what, who){
         case "cd":
             return `# CDEEZ NUTS ${who}`;
         case "sugon":
-            return `# SUGON DEEZ NUTS ${who}`;
-        
+            return `# SUGON DEEZ NUTS ${who}`;        
     }
 }
 
