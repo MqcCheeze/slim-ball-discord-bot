@@ -17,7 +17,7 @@ idfk.
 
 | Features | Progress | Status |
 | ------------- |:-------------:| -----:|
-| more sh*tpost stuff | 0% | Incomplete ❌ |
+| more sh*tpost stuff | 15% | Working on it ⏳ |
 | embed stuff | 0% | Incomplete ❌ |
 | web crawler stuff | 0% | Incomplete ❌ |
 
