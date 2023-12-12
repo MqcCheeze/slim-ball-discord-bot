@@ -19,7 +19,7 @@ const commands = [
             {
                 name: "who",
                 description: "who to ping",
-                type: ApplicationCommandOptionType.String,
+                type: ApplicationCommandOptionType.Mentionable,
                 required: true
             },
             {
