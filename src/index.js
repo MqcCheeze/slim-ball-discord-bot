@@ -1,5 +1,6 @@
 require("dotenv").config() // Gives access to .env file
 const { Client, IntentsBitField } = require("discord.js");
+const fs = require("fs");
 
 // Intents docs at https://discord.com/developers/docs/topics/gateway#list-of-intents
 
@@ -30,6 +31,12 @@ client.on("messageCreate", (message) => { // When bot reads message
     if(message.content === "wtf" || message.content === "Wtf" || message.content === "wth" || message.content === "Wth") {
         message.reply(getRandomArrElement(replies));
     }
+
+    if (message.content === "pong"){
+        message.reply("ping");
+    } else if (message.content === "ping"){
+        message.reply("pong");
+    }
 });
 
 client.on("interactionCreate", (interaction) => {
@@ -45,11 +52,16 @@ client.on("interactionCreate", (interaction) => {
                 interaction.reply(ballsCommand(interaction.options.get("what").value, interaction.options.get("who").value));
                 break;
             case "ratio":
-                interaction.reply(ratioMsg);
-                break;
+
+            getRandomLine("src/ratioMessages.txt", function (randomRatio) {
+                let ratio = randomRatio;
+                ratio = ratio.charAt(0).toUpperCase() + ratio.slice(1);
+                interaction.reply(`Yeah what ${interaction.user} said! ${ratio}`);
+            });
         }
     }
 })
+
 
 function getRandomArrElement(array) {
     const replyIndex = Math.floor(Math.random() * array.length);
@@ -57,9 +69,24 @@ function getRandomArrElement(array) {
     return selectedReply;
 }
 
+function getRandomLine(filename, callback){
+    fs.readFile(filename, "utf-8", function(err, data){
+      if(err) {
+          throw err;
+      }
+
+      const lines = data.split('\n');
+      
+      const line = lines[Math.floor(Math.random()*lines.length)]
+
+      callback(line);
+   })
+}
+
 function ballsCommand (what, who){
 
     who = `<@${who}>`;
+
     switch(what) {
         case "ligma":
             return `# LIGMA BALLS ${who}}`;
@@ -68,7 +95,7 @@ function ballsCommand (what, who){
         case "dragon":
             return `# DRAGON DEEZ BALLS ${who}`;
         case "candice":
-            return `# CANDICE COCK FIT IN YOUR MOUTH ${who}`;
+            return `# CANDICE FIT IN YOUR MOUTH ${who}`;
         case "bofa":
             return `# BOFA DEEZ BALLS IN YOUR MOUTH ${who}`;
         case "cd":
@@ -77,8 +104,3 @@ function ballsCommand (what, who){
             return `# SUGON DEEZ NUTS ${who}`;        
     }
 }
-
-
-
-
-const ratioMsg = `you fell off + ratio + you'e white + who asked + no u + deez nuts + radio + dont care + didnt ask + im a minor + im neurodivergent + caught in 4k + cope + seethe + GG + in 1947 the worlds first general purpose computer, the 30 ton ENIAC was created + your moms + the hood watches markiplier now + grow up + L + L (part 2) + retweet + ligma + taco bell tortilla crunch + think outside the bun + ur benched + ur a wrench + i own you + ur dad fell off + my dad could beat ur dad up + ur aimhacking + silver elite + tryhard + boomer + sksksksk + ur beta + im sigma + ur submissive + L (part 3) + yb better + ur sus + this is a cry for help and im extremely depressed. + quote tweet + youre cringe + i did your mom + you bought monkey nft + youre weirdchamp + youre a clown`;
