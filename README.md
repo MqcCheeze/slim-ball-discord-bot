@@ -7,7 +7,9 @@ A sh*tpost bot that just annoys you and your friends... I honestly don't know wh
 ## ⭐ Features of Slim Ball ⭐
 
 - You type wtf/wth and the bot will ratio you
-- You can ligma/sugma/dragon/candice/bofa someone with a slash command
+- You can /ball and choose to "deez nuts" someone with a variety of options to choose from
+- You can /ratio someone and the bot will side with you
+- You can /iasked and the bot will ask for you incase of a "who asked" moment
 
 ## ❓ Why was Slim Ball Created ❓
 
@@ -17,7 +19,7 @@ idfk.
 
 | Features | Progress | Status |
 | ------------- |:-------------:| -----:|
-| more sh*tpost stuff | 0% | Incomplete ❌ |
+| more sh*tpost stuff | 15% | Working on it ⏳ |
 | embed stuff | 0% | Incomplete ❌ |
 | web crawler stuff | 0% | Incomplete ❌ |
 
