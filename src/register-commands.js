@@ -13,6 +13,10 @@ const commands = [
         name: "ratio", 
         description: "send ratio!"
     },
+    {
+        name: "iasked", 
+        description: "make the bot defend you"
+    },
     {   name: "balls", 
         description: "ball",
         options: [

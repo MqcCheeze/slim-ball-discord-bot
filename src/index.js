@@ -41,7 +41,7 @@ client.on("messageCreate", (message) => { // When bot reads message
 
 client.on("interactionCreate", (interaction) => {
     if (interaction.isChatInputCommand()){
-        switch(interaction.commandName){
+        switch(interaction.commandName) {
             case "ping":
                 interaction.reply("pong");
                 break;
@@ -52,12 +52,13 @@ client.on("interactionCreate", (interaction) => {
                 interaction.reply(ballsCommand(interaction.options.get("what").value, interaction.options.get("who").value));
                 break;
             case "ratio":
-
-            getRandomLine("src/ratioMessages.txt", function (randomRatio) {
-                let ratio = randomRatio;
-                ratio = ratio.charAt(0).toUpperCase() + ratio.slice(1);
-                interaction.reply(`Yeah what ${interaction.user} said! ${ratio}`);
-            });
+                getRandomLine("src/ratioMessages.txt", function (randomRatio) {
+                    let ratio = randomRatio;
+                    ratio = ratio.charAt(0).toUpperCase() + ratio.slice(1);
+                    interaction.reply(`Yeah what ${interaction.user} said! ${ratio}`);
+                });
+            case "iasked":
+                interaction.reply(`I asked ${interaction.user}`);
         }
     }
 })
