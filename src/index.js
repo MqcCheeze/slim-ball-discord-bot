@@ -29,6 +29,10 @@ client.on("messageCreate", (message) => { // When bot reads message
 
     if(message.content === "wtf" || message.content === "Wtf" || message.content === "wth" || message.content === "Wth") {
         message.reply(getRandomArrElement(replies));
+    } else if (message.content === "ping"){
+        message.reply("pong");
+    } else if (message.content === "pong"){
+        message.reply("ping");
     }
 });
 
@@ -43,6 +47,9 @@ client.on("interactionCreate", (interaction) => {
                 break;
             case "balls":
                 interaction.reply(ballsCommand(interaction.options.get("what").value, interaction.options.get("who").value));
+                break;
+            case "ratio":
+                interaction.reply(ratioMsg);
                 break;
         }
     }
@@ -66,6 +73,15 @@ function ballsCommand (what, who){
             return `# CANDICE COCK FIT IN YOUR MOUTH ${who}`;
         case "bofa":
             return `# BOFA DEEZ BALLS IN YOUR MOUTH ${who}`;
+        case "cd":
+            return `# CDEEZ NUTS ${who}`;
+        case "sugon":
+            return `# SUGON DEEZ NUTS ${who}`;
         
     }
 }
+
+
+
+
+const ratioMsg = `you fell off + ratio + you'e white + who asked + no u + deez nuts + radio + dont care + didnt ask + im a minor + im neurodivergent + caught in 4k + cope + seethe + GG + in 1947 the worlds first general purpose computer, the 30 ton ENIAC was created + your moms + the hood watches markiplier now + grow up + L + L (part 2) + retweet + ligma + taco bell tortilla crunch + think outside the bun + ur benched + ur a wrench + i own you + ur dad fell off + my dad could beat ur dad up + ur aimhacking + silver elite + tryhard + boomer + sksksksk + ur beta + im sigma + ur submissive + L (part 3) + yb better + ur sus + this is a cry for help and im extremely depressed. + quote tweet + youre cringe + i did your mom + you bought monkey nft + youre weirdchamp + youre a clown`;
