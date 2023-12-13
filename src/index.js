@@ -30,7 +30,7 @@ const Greeting = () => {
     }
 };
 
-setInterval(Greeting, 60000);
+//setInterval(Greeting, 1000);
 
 const ratioReplies = [ "stfu lol", "ratio", "cry about it", "beta", "L" ];
 const confusedReplies = [ "what do u not get lol not that hard to understand...", 
