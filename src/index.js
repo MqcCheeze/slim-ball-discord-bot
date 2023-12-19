@@ -20,26 +20,8 @@ client.on("ready", (c) => { // When bot initialises
     console.log(`${c.user.username} is online...`)
 });
 
-const greetings = [ "YAHOOOO", "hey!!", "haiii", "how is everyone!!! :3", "hellooo", "hi freiens" ]
-
-const Greeting = () => {
-    try {
-        const channel = client.channels.cache.get("1180115044218978425").send(getRandomArrElement(greetings));
-    } catch {
-        return;
-    }
-};
-
-//setInterval(Greeting, 1000);
-
-const ratioReplies = [ "stfu lol", "ratio", "cry about it", "beta", "L" ];
-const confusedReplies = [ "what do u not get lol not that hard to understand...", 
-                            "are u stoopid?", 
-                            "lol dumb hehe", 
-                            "silly you", 
-                            ":nerd:" ];
-const noReplies = [ "yes", "actually... yes", "yeah lol", "who asked", "nah bro" ];
-const yesReplies = [ "no", "nah bro yes*", "lmao... NO!", " actually... no...", "uhm no?" ];
+const replies = ["stfu lol", "ratio", "cry about it", "beta", "L"];
+const commands = ["wtf", "wth", "pong", "ping"]
 
 client.on("messageCreate", (message) => { // When bot reads message
 
@@ -55,24 +37,34 @@ client.on("messageCreate", (message) => { // When bot reads message
     }
 
 
-    if (message.author.bot) {
-        return
+    if (message.author.bot && !commands.includes(message.content.toLowerCase())) {
+        return;
     }
 
-    if (message.content === "wtf" || message.content === "Wtf" || message.content === "wth" || message.content === "Wth") {
-        message.reply(getRandomArrElement(ratioReplies));
-    } else if (message.content === "huh" || message.content === "hoh" || message.content === "Huh" || message.content === "Hoh" || message.content === "what" || message.content === "What") {
-        message.reply(getRandomArrElement(confusedReplies));
-    } else if (message.content === "yes" || message.content === "Yes" || message.content === "yeah" || message.content === "Yeah") {
-        message.reply(getRandomArrElement(noReplies));
-    }  else if (message.content === "no" || message.content === "No" || message.content === "nah" || message.content === "Nah") {
-        message.reply(getRandomArrElement(yesReplies));
+    // Added a switch case implementation of the same thing if you want to use it instead.
+    switch(message.content.toLowerCase()){
+        case "wtf" || "wth":
+            message.reply(getRandomArrElement(replies));
+        break;
+        case "pong":
+            message.reply("ping");
+        break;
+        case "ping":
+            message.reply("pong");
+        break;
     }
 
-    if (message.content === "pong"){
+    if(message.content.toLowerCase() === "wtf" || message.content.toLowerCase() === "wth") {
+        message.reply(getRandomArrElement(replies));
+        return; // Always add return statements so it doesnt read the other if() statements if you wanna keep on using those.
+    }
+
+    if (message.content.toLowerCase() === "pong"){
         message.reply("ping");
-    } else if (message.content === "ping"){
+        return;
+    } else if (message.content.toLowerCase() === "ping"){
         message.reply("pong");
+        return;
     }
 });
 
